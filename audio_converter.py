@@ -8,7 +8,8 @@ from pathlib import Path
 # converts all .mp3 to .wav with ffmpeg
 # return a list of all wav files
 def open(path_name: str) -> list[str]:
-    """Reads all files in given path
+    """
+    Reads all files in given path
     converts all mp3's into wav files using ffmpeg
     returns list of strings that are paths of ALL wav files only
     """
@@ -35,7 +36,9 @@ def open(path_name: str) -> list[str]:
 
 # dunno what's better way to make it work
 def _convert_to_wav(filename: str) -> None:
-    """converts ONLY mp3 files to wav using ffmpeg"""
+    """
+    Converts ONLY mp3 files to wav using ffmpeg
+    """
     if filename.endswith(".wav"):
         return
 

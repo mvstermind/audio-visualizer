@@ -110,3 +110,4 @@ def fft_of_loudest_chunk(file: str, chunk_size: int):
 
 if __name__ == "__main__":
     main()
+

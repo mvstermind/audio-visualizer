@@ -1,3 +1,6 @@
+dunno how to push this project further
+dropping it for now, got insanely overwhelmed
+
 # audio-visualizer
 Ffmpeg is required!
 
