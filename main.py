@@ -6,10 +6,9 @@ def main():
 
     for file in files:
         loudest_avg, loudest_chunk_list = splitter.loudest_audio_chunk(
-            file, graph=True, fft_graph=True
+            file, graph=False, fft_graph=True
         )
 
 
 if __name__ == "__main__":
     main()
-
