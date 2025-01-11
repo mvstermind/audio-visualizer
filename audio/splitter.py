@@ -105,35 +105,3 @@ def plot_waveform_with_loudest(
     plt.grid()
     plt.tight_layout()
     plt.show()
-
-
-def fft_display(audio_data: np.ndarray, sample_rate: int):
-    """Displays the frequency spectrum (EQ display) of the given audio data in digital audio dBFS."""
-    # Normalize the audio (if it's not already normalized to [-1, 1])
-    audio_data = audio_data / np.max(np.abs(audio_data))
-
-    # FFT Calculation
-    n = len(audio_data)
-    fft_result = fft.rfft(audio_data)  # Compute real FFT
-    fft_magnitude = np.abs(fft_result)  # Get magnitudes
-
-    # Convert magnitude to digital audio dBFS
-    fft_magnitude_dbfs = 20 * np.log10(fft_magnitude + 1e-6)  # Avoid log(0)
-
-    # Frequency bins
-    freqs = fft.rfftfreq(n, d=1 / sample_rate)
-
-    # Filter frequencies to 20 Hz - 20 kHz
-    valid_range = (freqs >= 20) & (freqs <= 20000)
-    freqs = freqs[valid_range]
-    fft_magnitude_dbfs = fft_magnitude_dbfs[valid_range]
-
-    # Plotting the Frequency Spectrum
-    plt.figure(figsize=(10, 5))
-    plt.semilogx(freqs, fft_magnitude_dbfs, color="purple", linewidth=1.2)
-    plt.title("Frequency Spectrum (Digital Audio dBFS)")
-    plt.xlabel("Frequency (Hz)")
-    plt.ylabel("Amplitude (dBFS)")
-    plt.grid(True, which="both", linestyle="--", linewidth=0.5)
-    plt.tight_layout()
-    plt.show()
